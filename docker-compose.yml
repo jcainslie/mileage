@@ -7,9 +7,9 @@ services:
       - "5001:5000"
     volumes:
       - mileage:/app/instance
+    restart: unless-stopped
 
 volumes:
   mileage:
     external: true
-    name: mileage
 
