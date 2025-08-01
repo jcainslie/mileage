@@ -10,4 +10,6 @@ services:
 
 volumes:
   mileage:
+    external: true
     name: mileage
+
