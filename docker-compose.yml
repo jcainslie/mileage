@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mileage:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file: .env
+    volumes:
+      - mileage:/app/instance
+
+volumes:
+  mileage:
+    name: mileage
