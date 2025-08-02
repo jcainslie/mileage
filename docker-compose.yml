@@ -12,6 +12,7 @@ services:
       APP_USERNAME: ${APP_USERNAME}
       APP_PASSWORD: ${APP_PASSWORD}
       APP_SECRET: ${APP_SECRET}
+      DATABASE_URL: ${DATABASE_URL}
 
 volumes:
   mileage:
