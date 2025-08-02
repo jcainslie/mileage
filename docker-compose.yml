@@ -8,6 +8,10 @@ services:
     volumes:
       - mileage:/app/instance
     restart: unless-stopped
+    environment:
+      APP_USERNAME: ${APP_USERNAME}
+      APP_PASSWORD: ${APP_PASSWORD}
+      APP_SECRET: ${APP_SECRET}
 
 volumes:
   mileage:
