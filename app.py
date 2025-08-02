@@ -16,9 +16,16 @@ app = Flask(__name__)
 app.secret_key = os.getenv("APP_SECRET", "defaultsecret")
 
 os.makedirs(os.path.join(app.root_path, "instance"), exist_ok=True)
-db_path = os.path.join(app.root_path, "instance", "mileage.db")
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Use DATABASE_URL from environment if available
+db_url = os.getenv("DATABASE_URL")
+if db_url:
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_url
+else:
+    db_path = os.path.join(app.root_path, "instance", "mileage.db")
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_path}"
+
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 init_login(app)
